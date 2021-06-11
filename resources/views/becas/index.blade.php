@@ -7,30 +7,28 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Numero de control</th>
+        <th scope="col">Carrera</th>
+        <th scope="col">Semestre</th>
+        <th scope="col">Tipo de beca</th>
+        <th scope="col">
+          
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
+      @foreach($becas as $solicitud => $key)
+        <tr>
+          <th scope="row">{{$key->id}}</th>
+          <td>{{$key->name}}</td>
+          <td>{{$key->num_control}}</td>
+          <td>{{$key->carrera}}</td>
+          <td>{{$key->semestre}}</td>
+          <td>{{$key->tipo_beca}}</td>
+          <td><a class="btn btn-info" href="/solicitudes/{{$key->id}}">Ver solicitud</a></td>
+        </tr>
+      @endforeach
     </tbody>
   </table>
 @endsection

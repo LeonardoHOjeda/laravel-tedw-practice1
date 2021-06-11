@@ -16,7 +16,8 @@ class BecaController extends Controller
      */
     public function index()
     {
-        return view('becas.index');
+        $becas = DB::table('becas')->get();
+        return view('becas.index', ['becas' => $becas]);
     }
 
     /**
@@ -26,7 +27,8 @@ class BecaController extends Controller
      */
     public function create()
     {
-        return view('becas.create');
+        $solicitudes = Beca::all();
+        return view('becas.create', compact('solicitudes'));
     }
 
     /**
@@ -59,10 +61,6 @@ class BecaController extends Controller
             'archivo_identificacion' => $archivo_identificacion,
             'archivo_comprobante' => $archivo_comprobante,
         ]);
-
-        
-
-
         
         Storage::disk('s3')->setVisibility($archivo_motivos, 'public');
         Storage::disk('s3')->setVisibility($archivo_identificacion, 'public');
