@@ -66,7 +66,7 @@ class BecaController extends Controller
         Storage::disk('s3')->setVisibility($archivo_identificacion, 'public');
         Storage::disk('s3')->setVisibility($archivo_comprobante, 'public');
         //Redireccionamos
-        return redirect()->action('becas.index');
+        return redirect()->route('becas.index');
     }
 
     /**
